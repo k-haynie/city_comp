@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+    {% block main %}
+    <div>
+        <table>
+            <tr>
+                <th>Stats</th>
+                {% for stats in returned %}
+                    <th>{{cityState[loop.index - 1][0] + ", " + cityState[loop.index -1][1]}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Population</th>
+                {% for stats in returned %}
+                    <td>{{ "{:,}".format(returned[loop.index - 1]["Population"][1]|int) or "Not found"}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Median Income</th>
+                {% for stats in returned %}
+                    <td>{{ "${:,}".format(returned[loop.index - 1]["Population"][2]|int) or "Not found"}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Median Rent</th>
+                {% for stats in returned %}
+                    <td>{{ "${:,}".format(returned[loop.index - 1]["Population"][3]|int) or "Not found"}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Median House Value</th>
+                {% for stats in returned %}
+                    <td>{{ "${:,}".format(returned[loop.index - 1]["Population"][4]|int) or "Not found"}}</td>
+                {% endfor %}
+            </tr>
+            <tr></tr>
+            <tr>
+                <th class="trispan" colspan={{returned|length + 1}}>State</th>
+            </tr>
+            <tr>
+                <th>Population</th>
+                {% for stats in returned %}
+                    <td>{{ "{:,}".format(returned[loop.index - 1]["State Population"]|int) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Murder Rate</th>
+                {% for stats in returned %}
+                    <td>{{ "{} per 100k".format(returned[loop.index - 1]["Murder Rate"]) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Car Theft Rate</th>
+                {% for stats in returned %}
+                    <td>{{ "{} per 100k".format(returned[loop.index - 1]["Car Theft Rate"]) }}</td>
+                {% endfor %}
+            </tr>
+            <tr></tr>
+            <tr>
+                <th class="trispan"colspan={{returned|length + 1}}>State-level Covid</th>
+            </tr>
+            <tr>
+                <th>Cases</th>
+                {% for stats in returned %}
+                    <td>{{ "{:,}".format(returned[loop.index - 1]["Covid Deaths"][1]|int) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Deaths</th>
+                {% for stats in returned %}
+                    <td>{{ "{:,}".format(returned[loop.index - 1]["Covid Deaths"][0]|int) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Full Vaccinations</th>
+                {% for stats in returned %}
+                    <td>{{ "{:,}".format(returned[loop.index - 1]["Covid Deaths"][2]|int) }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+        <form action="/" method="get">
+            <button id="search">Back to Search</button>
+        </form>
+        <h4 style="margin-top: 0px;">Not the results you were looking for?<br>Check your spelling, and exclude words like "city" or "town" from your search for optimal results.</h4>
+    </div>
+    {% endblock %}

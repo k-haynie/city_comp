@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+    {% block main %}
+    <form action="/" method="post">
+        <div id="csForm">
+
+        {% for option in range(options) %}
+
+            <div class="cityState">
+
+                {% if queries and option < queries|length and queries[option][0] %}
+                <input name="city{{option}}" placeholder="City" type="text" autofocus value="{{queries[option][0]}}">
+                {% else %}
+                <input name="city{{option}}" placeholder="City" type="text" autofocus>
+                {% endif %}
+
+                <select name="state{{option}}" >
+                    {% for state in states %}
+                        {% if queries and option < queries|length and queries[option][1] == state %}
+                        <option value={{state}} selected>{{state}}</option>
+                        {% else %}
+                        <option value={{state}}>{{state}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+        {% endfor %}
+
+        </div>
+        <div id="loader" style="display: none;">
+            <img src="/static/loader.gif" alt="Loading gif">
+        </div>
+        {% if options < 5 %}
+        <button name="Add" value="Add">Add Place</button>
+        <br>
+        {% endif %}
+        {% if options > 2 %}
+        <button name="Subtract" value="Subtract">Remove Place</button>
+        <br>
+        {% endif %}
+        <button name="Submit" value="Submit" type="Submit" onClick="document.getElementById('loader').style.display = 'block';">Submit</button>
+    </form>
+    {% endblock%}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block main %}
+    <div id="aboutDiv">
+        <h2 style="padding-bottom: 15px; padding-top: 15px;">This website utilizes several publicly available APIs.</h2>
+        <h3 style="padding-bottom: 15px;">
+        If you would like to see more statistics or do further research on your own, here are links to the APIs:
+        </h3>
+    </div>
+    <div id="links">
+        <ul>
+            <a href="https://www.census.gov/data/developers/data-sets/acs-5year.html"><li>5-year ACS survey database</li></a>
+            <a href="https://www.census.gov/data/developers/data-sets/popest-popproj/popest.html"><li>State population database</li></a>
+            <a href="https://crime-data-explorer.fr.cloud.gov/pages/home"><li>FBI crime statistics database</li></a>
+            <a href="https://covidactnow.org/data-api"><li>Covid statistics database</li></a>
+        </ul>
+    </div>
+
+
+{% endblock %}

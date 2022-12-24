@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lan="en">
+    <head>
+        <link rel="shortcut icon" href="https://www.freeiconspng.com/uploads/purple-circle-icon-5.png">
+        <link href="/static/style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Asap:ital@0;1&family=Signika&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <header id="header">
+            <ul>
+                <a href="{{ url_for('index') }}"><h1 id="name" style="font-size: 40px;">City Statistics</h1></a>
+                <a href="/about"><h2 id="about">About</h2></a>
+            </ul>
+        </header>
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+</html>
